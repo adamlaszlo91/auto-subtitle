@@ -27,6 +27,7 @@ class PyannotateDiarizerImpl(Diarizer):
                     speaker_id=speaker,
                     start_s=turn.start,
                     end_s=turn.end,
+                    sample_rate=sample_rate,
                     waveform=cut_waveform,
                 )
             )
