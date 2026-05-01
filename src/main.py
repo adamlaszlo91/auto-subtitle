@@ -9,11 +9,11 @@ from speech_to_text.whisper_speech_to_text_impl import WhisperSpeechToTextImpl
 from srt_generator.srt_generator import SrtGenerator
 from srt_generator.plain_srt_generator_impl import PlainSrtGeneratorImpl
 from pathlib import Path
+import sys
 
 
 def main():
-    # TODO: Use argument
-    input_path = Path("input") / "The_YouTube_Interview_with_President_Obama_part.webm"
+    input_path = Path(sys.argv[1])
 
     audio_extractor: AudioExtractor = AudioExtractAudioExtractorImpl()
     diarizer: Diarizer = PyannotateDiarizerImpl()
@@ -30,9 +30,8 @@ def main():
         )
         print(transciption)
         transcriptions.append(transciption)
-    # TODO: Depend on input file name
     srt_generator.generate(
-        file_name="The_YouTube_Interview_with_President_Obama_part.srt",
+        file_name=input_path.with_suffix(".srt").name,
         diarization_result=diarization_result,
         transcriptions=transcriptions,
     )
