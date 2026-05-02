@@ -24,7 +24,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Winterize image
+### Generate srt
 ```
 python3 src/main.py path_to_video
 ```
